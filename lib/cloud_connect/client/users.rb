@@ -14,8 +14,23 @@ module CloudConnect
     # @return [Array of Hashie::Mash] Users
     def users(opts = {})
       opts.default! :ret => %w(id login email).join(',')
-      users = connection.get(connection.build_url("users", opts)).body
+      users = connection.get(connection.build_url('users', opts)).body
       users.map!{|hash| hash.values.first}
+    end
+
+    # Return information about a specific user
+    #
+    # @param [String] user_id Unit ID
+    # @return [Hashie::Mash] User info
+    def user(user_id = nil)
+      user_id = username if user_id.nil? || user_id == ""
+      if user_id.to_i.to_s == user_id.to_s
+        users = connection.get(connection.build_url('users', :userids => user_id)).body
+      else
+        users = connection.get(connection.build_url('users', :logins => user_id)).body
+      end
+      users.map!{|hash| hash.values.first}
+      users.first
     end
   end
 end

@@ -17,6 +17,7 @@ module CloudConnect
     def units(opts = {})
       units = connection.get(connection.build_url("units", opts)).body
       units.map!{|hash| hash.values.first}
+      units.each{|u| u.extend UnitHelper; u._cloud_connect = self;}
     end
 
     # Search for a specific unit knowing it's modid
@@ -31,15 +32,45 @@ module CloudConnect
       # TODO: Rename unit_search?
       units = connection.get(connection.build_url("units/search", :modids => modids)).body
       units.map!{|hash| hash.values.first}
+      units.each{|u| u.extend UnitHelper; u._cloud_connect = self;}
     end
 
     # Return information about a specific unit
     #
     # @param [String] unit_id Unit ID
-    # @return [Hashie::Mash] User info
-    def unit(unit_id=nil)
-      connection.get("/units/#{unit_id}").body
+    # @param [Hash] opts the options to filter the units.
+    # @option opts [String] :ret ('id, lat, long, time') Select attributes to fetch
+    # @option opts [String] :fieldids List of field ids
+    # @option opts [String] :unknow Allow unknown position
+    # @return [Hashie::Mash] Unit info
+    def unit(unit_id=nil, opts = {})
+      units = connection.get(connection.build_url("units", opts.merge(:unitids => unit_id))).body
+      units.map!{|hash| hash.values.first}
+      units.each{|u| u.extend UnitHelper; u._cloud_connect = self;}
+      units.first
     end
 
+    module UnitHelper
+      attr_accessor :_cloud_connect
+
+      # Return the last known location of a specific unit
+      #
+      # @return [Integer lat, Integer long] Latitude, Longitude
+      def location
+        [lat.to_f / 100_000, lng.to_f / 100_000]
+      end
+
+      # Send a message to the unit
+      #
+      # @param [Integer] channel
+      # @param [String] content
+      # @param [Hash] opts
+      # @return [Hashie::Mash] The message
+      # @see http://develop.g8teway.com/p/messages.html#sending_a_new_message
+      def send_message(channel, content, opts = {})
+        raise "Unknown unit id, try providing :ret => 'id' when fetching units from the API." unless id && id > 0
+        _cloud_connect.send_message(id, channel, content, opts)
+      end
+    end
   end
 end

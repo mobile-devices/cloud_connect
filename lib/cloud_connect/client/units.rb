@@ -51,6 +51,7 @@ module CloudConnect
     end
 
     module UnitMethods
+      # @private
       attr_accessor :_cloud_connect
 
       # Return the last known location of a specific unit

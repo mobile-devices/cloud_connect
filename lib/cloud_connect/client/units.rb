@@ -17,7 +17,7 @@ module CloudConnect
     def units(opts = {})
       units = connection.get(connection.build_url("units", opts)).body
       units.map!{|hash| hash.values.first}
-      units.each{|u| u.extend UnitHelper; u._cloud_connect = self;}
+      units.each{|u| u.extend UnitMethods; u._cloud_connect = self;}
     end
 
     # Search for a specific unit knowing it's modid
@@ -32,7 +32,7 @@ module CloudConnect
       # TODO: Rename unit_search?
       units = connection.get(connection.build_url("units/search", :modids => modids)).body
       units.map!{|hash| hash.values.first}
-      units.each{|u| u.extend UnitHelper; u._cloud_connect = self;}
+      units.each{|u| u.extend UnitMethods; u._cloud_connect = self;}
     end
 
     # Return information about a specific unit
@@ -46,11 +46,11 @@ module CloudConnect
     def unit(unit_id=nil, opts = {})
       units = connection.get(connection.build_url("units", opts.merge(:unitids => unit_id))).body
       units.map!{|hash| hash.values.first}
-      units.each{|u| u.extend UnitHelper; u._cloud_connect = self;}
+      units.each{|u| u.extend UnitMethods; u._cloud_connect = self;}
       units.first
     end
 
-    module UnitHelper
+    module UnitMethods
       attr_accessor :_cloud_connect
 
       # Return the last known location of a specific unit

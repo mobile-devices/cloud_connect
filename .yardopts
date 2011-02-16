@@ -1,0 +1,7 @@
+'lib/cloud_connect.rb' 'lib/cloud_connect/**/*.rb'
+--no-private
+--protected
+--tag format:"Supported formats"
+--tag authenticated:"Requires Authentication"
+--tag rate_limited:"Rate Limited"
+--markup markdown

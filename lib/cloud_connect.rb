@@ -17,6 +17,11 @@ module CloudConnect
     attr_accessor :account
     attr_accessor :env
 
+    def configure
+      yield self
+      true
+    end
+
     require 'ext/object'
     require 'ext/module'
     require 'ext/hash'

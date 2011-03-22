@@ -2,7 +2,6 @@ module Faraday
   class Response::RaiseHttp4xx < Response::Middleware
     def self.register_on_complete(env)
       env[:response].on_complete do |response|
-        puts "STATUS: <<<<<<<<< #{response[:status]} >>>>>>>>>>>>"
         case response[:status].to_i
         when 400
           raise CloudConnect::BadRequest, error_message(response)

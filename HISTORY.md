@@ -1,3 +1,8 @@
+2.0.0 - December 6, 2011
+------------------------
+* Release current version as 2.0.0 (Synchronise with CloudConnect v2) for reference before "branching" for 3.0.0 (CloudConnect v3),
+  to ease integration and documentation.
+
 0.0.2 - March 22, 2011
 ----------------------
 * [Removed HTTP status debug log](https://github.com/mobile-devices/cloud_connect/commit/1d032259d16b82749fe595bfa0a15f05bb8af65a) ([@dohzya][http://twitter.com/#!/dohzya])

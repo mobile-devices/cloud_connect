@@ -36,7 +36,6 @@ GEM
     rspec-mocks (2.0.1)
       rspec-core (~> 2.0.1)
       rspec-expectations (~> 2.0.1)
-    yard (0.6.1)
 
 PLATFORMS
   ruby
@@ -52,4 +51,3 @@ DEPENDENCIES
   multi_json (~> 0.0.0)
   rake (~> 0.8)
   rspec
-  yard (~> 0.6)

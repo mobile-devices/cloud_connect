@@ -8,6 +8,7 @@ require 'cloud_connect/client/fields'
 require 'cloud_connect/client/channels'
 require 'cloud_connect/client/tracks'
 require 'cloud_connect/client/messages'
+require 'cloud_connect/client/notification'
 
 module CloudConnect
   class Client
@@ -19,7 +20,7 @@ module CloudConnect
         send("#{key}=", options[key])
       end
     end
-  
+
     def enhance(object, with_opts)
       # @private
       # Add custom methods to provided object(s).
@@ -46,5 +47,6 @@ module CloudConnect
     include CloudConnect::Client::Channels
     include CloudConnect::Client::Tracks
     include CloudConnect::Client::Messages
+    include CloudConnect::Client::Notification
   end
 end

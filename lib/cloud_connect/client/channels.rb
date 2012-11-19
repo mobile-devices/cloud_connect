@@ -12,7 +12,19 @@ module CloudConnect
       def channel(name, options={})
         enhance( get("channels/#{name}", options), with: ChannelMethods )
       end
-  
+
+      # Search channels
+      #
+      # @param search_term [String] The term to search for
+      # @return [Array] A list of channels matching the search term
+      # @see http://wordsabout.it/mobile-devices/cloudconnect-user-documentation/cc-0006-channels
+      # @example Search for 'com.mdi.services.adminProtocol' in the channels
+      #   @client = CloudConnect::Client.new(:account => 'foor', :token => 'bar')
+      #   @client.search_channels
+      def search_channels(search_term, options={})
+        enhance( get("channels?q=#{search_term}", options), with: ChannelMethods )
+      end
+
       # Get channels
       #
       # @return [Array] A list of all channels
@@ -24,7 +36,7 @@ module CloudConnect
         enhance( get("channels", options), with: ChannelMethods )
       end
       alias :list_channels :channels
-  
+
       # Create a channel
       #
       # @param name [String] Name of the channel
@@ -40,7 +52,23 @@ module CloudConnect
       def create_channel(name, options={})
         enhance( post("channels", options.merge({:name => name})), with: ChannelMethods )
       end
-  
+
+      # Update a channel
+      #
+      # @param name [String] Name of the channel
+      # @param options [Hash] A customizable set of options
+      # @options options [Integer] :msgttl    The delay in seconds before the message is considered expired (and will not be sent)
+      # @options options [Integer] :unitack   The delay in seconds for acknowledgment by the asset (after the message has been sent)
+      # @options options [Integer] :serverack The delay in seconds for acknowledgment by the server (after the message has been sent)
+      # @return [Channel] Your newly updated channel
+      # @see http://wordsabout.it/mobile-devices/cloudconnect-user-documentation/cc-0007-channel#update_a_channel
+      # @example Update a Channel
+      #   @client = CloudConnect::CloudConnect.new(:account => 'foo', :token => 'bar')
+      #   @client.create_channel("weather", :msgttl => 123, ...)
+      def update_channel(name, options={})
+        enhance( put("channels/#{name}", options.merge({:name => name})), with: ChannelMethods )
+      end
+
       # Delete a single channel
       #
       # @param name [String] Name fo the channel
@@ -52,7 +80,7 @@ module CloudConnect
       def delete_channel(name, options={})
         delete("channels/#{name}", options, true)
       end
-  
+
       module ChannelMethods
         extend CustomMethods
       end

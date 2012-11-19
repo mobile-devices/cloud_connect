@@ -18,7 +18,7 @@ Gem::Specification.new do |gem|
   gem.description = %q{Simple wrapper for the CloudConnect v3 API}
   gem.email = ['jean-paul.bonnetouche@mobile-devices.fr']
   gem.files = `git ls-files`.split("\n")
-  gem.homepage = 'https://github.com/mobile-devices/cloud_connect'
+  gem.homepage = 'https://github.com/benamib/cloud_connect'
   gem.name = 'cloud_connect'
   gem.platform = Gem::Platform::RUBY
   gem.require_paths = ['lib']

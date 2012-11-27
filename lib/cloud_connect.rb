@@ -1,4 +1,5 @@
 require 'cloud_connect/configuration'
+require 'cloud_connect/notification'
 require 'cloud_connect/client'
 require 'cloud_connect/error'
 

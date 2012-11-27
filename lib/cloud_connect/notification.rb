@@ -3,14 +3,10 @@ require 'cloud_connect/connection'
 require 'cloud_connect/request'
 
 require 'cloud_connect/client/custom_methods'
-require 'cloud_connect/client/assets'
-require 'cloud_connect/client/fields'
-require 'cloud_connect/client/channels'
-require 'cloud_connect/client/tracks'
-require 'cloud_connect/client/messages'
+require 'cloud_connect/notification/notification'
 
 module CloudConnect
-  class Client
+  class Notification
     attr_accessor(*Configuration::VALID_OPTIONS_KEYS)
 
     def initialize(options={})
@@ -41,10 +37,7 @@ module CloudConnect
     include CloudConnect::Connection
     include CloudConnect::Request
 
-    include CloudConnect::Client::Assets
-    include CloudConnect::Client::Fields
-    include CloudConnect::Client::Channels
-    include CloudConnect::Client::Tracks
-    include CloudConnect::Client::Messages
+    include CloudConnect::Notification::Notification
+
   end
 end

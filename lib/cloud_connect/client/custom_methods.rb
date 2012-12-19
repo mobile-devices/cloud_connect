@@ -4,7 +4,7 @@ module CustomMethods
     # FIXME: Useless time consuming (especially for arrays)...
     base.class.send(:attr_accessor, :_client) unless base.respond_to?(:_client)
   end
-  
+
   # @private
   # By extending CustomMethods in YourModule, you are able to call
   # YourModule.apply_to(object_or_array) to add YourModule methods to the

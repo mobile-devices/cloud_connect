@@ -1,6 +1,7 @@
 module CloudConnect
   class Client
     module Fields
+
       # Get a field
       #
       # @param name [String] Name of the field
@@ -12,7 +13,19 @@ module CloudConnect
       def field(name, options={})
         enhance( get("fields/#{name}", options), with: FieldMethods )
       end
-  
+
+      # Search fields
+      #
+      # @param search_term [String] The term to search for
+      # @return [Array] A list of fields matching the search term
+      # @see http://wordsabout.it/mobile-devices/cloudconnect-user-documentation/cc-0006-fields
+      # @example Search for 'TEMPERATURE' in the fields
+      #   @client = CloudConnect::Client.new(:account => 'foor', :token => 'bar')
+      #   @client.search_fields
+      def search_fields(search_term, options={})
+        enhance( get("fields?q=#{search_term}", options), with: FieldMethods )
+      end
+
       # Get fields
       #
       # @return [Array] A list of all fields
@@ -24,7 +37,7 @@ module CloudConnect
         enhance( get("fields", options), with: FieldMethods )
       end
       alias :list_fields :fields
-  
+
       # Create a field
       #
       # @param name [String] Name of the field
@@ -42,7 +55,25 @@ module CloudConnect
       def create_field(name, options={})
         enhance( post("fields", options.merge({:name => name})), with: FieldMethods )
       end
-  
+
+      # Update an field
+      #
+      # @param name [String] Name of the field
+      # @param options [Hash] A customizable set of options
+      # @options options [Integer] :field ID of the field
+      # @options options [String] :field_type Type of the field: <tt>unknown</tt>, <tt>boolean</tt>, <tt>integer</tt>, <tt>decimal</tt>, <tt>string</tt>, or <tt>base64</tt>
+      # @options options [String] :size Size of the field
+      # @options options [String] :ack
+      # @options options [String] :description Description of the field
+      # @return [Field] Your newly updated field
+      # @see http://wordsabout.it/mobile-devices/cloudconnect-user-documentation/cc-0006-fields#update_a_field
+      # @example Update a Field
+      #   @client = CloudConnect::CloudConnect.new(:account => 'foo', :token => 'bar')
+      #   @client.update_field("CUSTOM_SENSOR_TEMP", :field_type => 'integer', :size => 1, :description => "Custom sensor temp in Celsius")
+      def update_field(name, options={})
+        enhance( put("/fields/#{name}", options.merge({:name => name})), with: FieldMethods )
+      end
+
       # Delete a single field
       #
       # @param name [String] Name fo the field
@@ -54,7 +85,7 @@ module CloudConnect
       def delete_field(name, options={})
         delete("fields/#{name}", options, true)
       end
-  
+
       module FieldMethods
         extend CustomMethods
       end

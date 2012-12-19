@@ -28,7 +28,7 @@ module CloudConnect
         path.sub(%r{^/}, '') # prevent leading slash
         response = connection(raw, force_urlencoded).send(method) do |request|
           request.headers['Accept'] = 'application/json'
-  
+
           case method
           when :delete, :get
             if auto_traversal && per_page.nil?

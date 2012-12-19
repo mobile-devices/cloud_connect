@@ -19,7 +19,7 @@ module CloudConnect
         send("#{key}=", options[key])
       end
     end
-  
+
     def enhance(object, with_opts)
       # @private
       # Add custom methods to provided object(s).

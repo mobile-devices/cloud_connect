@@ -49,6 +49,17 @@ module CloudConnect
       end
       alias :list_messages :messages
 
+      # Send a message to the unit
+      #
+      # @param imei [String] IMEI of the asset
+      # @param channel [String] Channel for the message
+      # @param payload [String] Payload of the message to send
+      # @return [Message] The message
+      # @see http://wordsabout.it/mobile-devices/cloudconnect-user-documentation/cc-0005-messages#push_a_message_to_an_asset
+      def send_message(imei, channel, payload, options={})
+        enhance( post("messages", options.merge({recipient: imei, asset: imei, channel: channel, b64_payload: Base64.encode64(payload)})), with: MessageMethods )
+      end
+
       module MessageMethods
         extend CustomMethods
       end

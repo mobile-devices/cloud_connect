@@ -24,7 +24,7 @@ module CloudConnect
       # @options options [Array] :imeis list of assets concerned by this configuration
       # @return [Field] Your newly created configuration
       def create_configuration(name, options={})
-        enhance( post("configs", options.merge({:name => name})), with: ConfigurationMethods )
+        enhance( post("configs", options.merge(name: name)), with: ConfigurationMethods )
       end
 
       # Update a configuration
@@ -35,7 +35,7 @@ module CloudConnect
       # @options options [Array] :imeis list of assets concerned by this configuration
       # @return [Field] Your newly created configuration
       def update_configuration(id, options={})
-        enhance( put("configs/#{id}", options.merge({:name => name})), with: ConfigurationMethods )
+        enhance( put("configs/#{id}", options), with: ConfigurationMethods )
       end
 
       # Get all configurations

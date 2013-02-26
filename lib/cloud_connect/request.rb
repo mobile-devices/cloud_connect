@@ -52,7 +52,7 @@ module CloudConnect
         if raw
           response
         elsif auto_traversal && ( next_url = links(response)["next"] )
-          response.body + request(method, next_url, options, authenticate, raw, force_urlencoded)
+          response.body + request(method, next_url, options, raw, force_urlencoded)
         else
           response.body
         end

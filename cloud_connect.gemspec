@@ -14,16 +14,17 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'simplecov'
   gem.add_development_dependency 'webmock'
   gem.add_development_dependency 'yard'
-  gem.authors = ["Jean-Paul Bonnetouche"]
-  gem.description = %q{Simple wrapper for the CloudConnect v3 API}
-  gem.email = ['jean-paul.bonnetouche@mobile-devices.fr']
-  gem.files = `git ls-files`.split("\n")
-  gem.homepage = 'https://github.com/mobile-devices/cloud_connect'
-  gem.name = 'cloud_connect'
-  gem.platform = Gem::Platform::RUBY
-  gem.require_paths = ['lib']
   gem.required_rubygems_version = Gem::Requirement.new('>= 1.3.6')
-  gem.summary = gem.description
-  gem.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
-  gem.version = CloudConnect::VERSION
+
+  gem.authors       = ['Jean-Paul Bonnetouche']
+  gem.summary       = 'Wrapper for the CloudConnect v3 API'
+  gem.description   = 'Simple wrapper for the CloudConnect v3 API'
+  gem.email         = ['jean-paul.bonnetouche@mobile-devices.fr']
+  gem.files         = `git ls-files`.split("\n")
+  gem.homepage      = 'https://github.com/mobile-devices/cloud_connect'
+  gem.name          = 'cloud_connect'
+  gem.platform      = Gem::Platform::RUBY
+  gem.require_paths = ['lib']
+  gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  gem.version       = CloudConnect::VERSION
 end

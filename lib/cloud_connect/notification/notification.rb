@@ -56,9 +56,9 @@ module CloudConnect
         if mash.meta.event == "message"
           mash.payload.payload = decode_b64(mash.payload.b64_payload, "string")
         elsif mash.meta.event == "track"
-          mash.payload.fields.each do |attr|
-            attr.last.b64_value = decode_b64(attr.last.b64_value, "integer")
-          end
+          # mash.payload.fields.each do |attr|
+          #   attr.last.b64_value = decode_b64(attr.last.b64_value, "integer")
+          # end
         end
         return mash
       end

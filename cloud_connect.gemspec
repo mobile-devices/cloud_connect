@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version     = CloudConnect::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Jean-Paul Bonnetouche"]
-  s.email       = ["jean-paul.bonnetouche@mobile-devices.fr"]
+  s.email       = ["alexandre.mora@mobile-devices.fr"]
   s.homepage    = "http://rubygems.org/gems/cloud_connect"
   s.summary     = "Wrapper for Cloud Connect"
   s.description = "Ruby Wrapper for the Mobile Devices Cloud Connect API"

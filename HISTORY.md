@@ -1,3 +1,10 @@
+2.0.1 - August 13, 2014
+-----------------------
+* Update faraday from 0.5.1 to 0.8.9
+* Update faraday_middleware from 0.1.7 to 0.8.8
+* Update multi_json from 0.0.5 to 1.10.1
+* Update hashie from 0.4.0 to 1.2.0
+
 2.0.0 - December 6, 2011
 ------------------------
 * Release current version as 2.0.0 (Synchronise with CloudConnect v2) for reference before "branching" for 3.0.0 (CloudConnect v3),

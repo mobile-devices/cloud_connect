@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.homepage    = "http://rubygems.org/gems/cloud_connect"
   s.summary     = "Wrapper for Cloud Connect"
   s.description = "Ruby Wrapper for the Mobile Devices Cloud Connect API"
+  s.version     = '2.0.1'
 
   s.required_rubygems_version = ">= 1.3.6"
 

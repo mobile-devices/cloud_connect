@@ -4,7 +4,7 @@ PATH
     cloud_connect (2.0.0)
       faraday (~> 0.8.0)
       faraday_middleware (~> 0.8.0)
-      hashie (~> 0.4.0)
+      hashie (~> 1.2.0)
       json (~> 1.8.0)
       multi_json (~> 1.10.0)
 
@@ -17,7 +17,7 @@ GEM
       multipart-post (~> 1.2.0)
     faraday_middleware (0.8.8)
       faraday (>= 0.7.4, < 0.9)
-    hashie (0.4.0)
+    hashie (1.2.0)
     json (1.8.1)
     multi_json (1.10.1)
     multipart-post (1.2.0)

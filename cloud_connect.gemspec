@@ -6,18 +6,19 @@ Gem::Specification.new do |s|
   s.version     = CloudConnect::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Jean-Paul Bonnetouche"]
-  s.email       = ["jean-paul.bonnetouche@mobile-devices.fr"]
+  s.email       = ["alexandre.mora@mobile-devices.fr"]
   s.homepage    = "http://rubygems.org/gems/cloud_connect"
   s.summary     = "Wrapper for Cloud Connect"
   s.description = "Ruby Wrapper for the Mobile Devices Cloud Connect API"
+  s.version     = '2.0.1'
 
   s.required_rubygems_version = ">= 1.3.6"
 
-  s.add_runtime_dependency "json"
-  s.add_runtime_dependency "multi_json", "~> 0.0.0"
-  s.add_runtime_dependency "faraday", "~> 0.5.0"
-  s.add_runtime_dependency "faraday_middleware", "~> 0.1.6"
-  s.add_runtime_dependency "hashie", "~> 0.4.0"
+  s.add_runtime_dependency "json", "~> 1.8.0"
+  s.add_runtime_dependency "multi_json", "~> 1.10.0"
+  s.add_runtime_dependency "faraday", "~> 0.8.0"
+  s.add_runtime_dependency "faraday_middleware", "~> 0.8.0"
+  s.add_runtime_dependency "hashie", "~> 1.2.0"
 
   s.add_development_dependency "bundler", ">= 1.0.0"
   s.add_development_dependency "bluecloth", ">= 2.0"

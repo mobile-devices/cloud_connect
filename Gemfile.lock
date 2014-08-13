@@ -1,41 +1,39 @@
 PATH
   remote: .
   specs:
-    cloud_connect (0.0.2)
-      faraday (~> 0.5.0)
-      faraday_middleware (~> 0.1.6)
-      hashie (~> 0.4.0)
-      json
-      multi_json (~> 0.0.0)
+    cloud_connect (2.0.0)
+      faraday (~> 0.8.0)
+      faraday_middleware (~> 0.8.0)
+      hashie (~> 1.2.0)
+      json (~> 1.8.0)
+      multi_json (~> 1.10.0)
 
 GEM
   remote: http://rubygems.org/
   specs:
-    addressable (2.2.2)
-    bluecloth (2.0.11)
-    diff-lcs (1.1.2)
-    faraday (0.5.1)
-      addressable (~> 2.2.2)
-      multipart-post (~> 1.0.1)
-      rack (~> 1.2.1)
-    faraday_middleware (0.1.7)
-      faraday (~> 0.5.1)
-    hashie (0.4.0)
-    json (1.5.1)
-    multi_json (0.0.4)
-    multipart-post (1.0.1)
-    rack (1.2.1)
-    rake (0.8.7)
-    rspec (2.0.1)
-      rspec-core (~> 2.0.1)
-      rspec-expectations (~> 2.0.1)
-      rspec-mocks (~> 2.0.1)
-    rspec-core (2.0.1)
-    rspec-expectations (2.0.1)
-      diff-lcs (>= 1.1.2)
-    rspec-mocks (2.0.1)
-      rspec-core (~> 2.0.1)
-      rspec-expectations (~> 2.0.1)
+    bluecloth (2.2.0)
+    diff-lcs (1.2.5)
+    faraday (0.8.9)
+      multipart-post (~> 1.2.0)
+    faraday_middleware (0.8.8)
+      faraday (>= 0.7.4, < 0.9)
+    hashie (1.2.0)
+    json (1.8.1)
+    multi_json (1.10.1)
+    multipart-post (1.2.0)
+    rake (0.9.6)
+    rspec (3.0.0)
+      rspec-core (~> 3.0.0)
+      rspec-expectations (~> 3.0.0)
+      rspec-mocks (~> 3.0.0)
+    rspec-core (3.0.3)
+      rspec-support (~> 3.0.0)
+    rspec-expectations (3.0.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.0.0)
+    rspec-mocks (3.0.3)
+      rspec-support (~> 3.0.0)
+    rspec-support (3.0.3)
 
 PLATFORMS
   ruby
@@ -44,10 +42,5 @@ DEPENDENCIES
   bluecloth (>= 2.0)
   bundler (>= 1.0.0)
   cloud_connect!
-  faraday (~> 0.5.0)
-  faraday_middleware (~> 0.1.6)
-  hashie (~> 0.4.0)
-  json
-  multi_json (~> 0.0.0)
   rake (~> 0.8)
   rspec

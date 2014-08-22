@@ -1,6 +1,6 @@
 module CloudConnect
   class Client
-    attr_reader :username, :password, :account, :env, :cookie
+    attr_reader :username, :password, :account, :env, :cookie, :version
     attr_writer :cookie
 
     def initialize(options={})
@@ -8,6 +8,7 @@ module CloudConnect
       @password = options[:password] || CloudConnect.password
       @account  = options[:account]  || CloudConnect.account
       @env      = options[:env]      || CloudConnect.env      || "prod"
+      @version  = options[:version]  || "v2"
     end
 
     # Raw HTTP connection, either Faraday::Connection
@@ -34,13 +35,16 @@ module CloudConnect
       if env == "preprod"
         "http://srv/api/v2"
       else
-        "http://#{env}.g8teway.com/api/v2"
+        "http://#{env}.g8teway.com/api/#{version}"
       end
     end
 
-
     def login
-      req = connection.post('sessions', {:login => username, :password => password, :client => account})
+      if version == "v1.5"
+        req = connection.post('ws?login', "username=#{username}&password=#{password}&client=#{account}")
+      else
+        req = connection.post('sessions', {:login => username, :password => password, :client => account})
+      end
     end
 
     private

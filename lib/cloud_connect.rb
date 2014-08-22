@@ -15,6 +15,7 @@ module CloudConnect
     attr_accessor :username
     attr_accessor :password
     attr_accessor :account
+    attr_accessor :version
     attr_accessor :env
 
     def configure

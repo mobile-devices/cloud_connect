@@ -1,6 +1,8 @@
 module CloudConnect
   module Messages
 
+    require 'open-uri'
+
     # Returns all messages that match parameters provided in +opts+ list
     # (if +opts+ is provided)
     #
@@ -40,8 +42,13 @@ module CloudConnect
       # TODO: rename #message_create ?
       opts.merge! :channelid => channel, :unitid => unit, :content => content
       response = connection.post do |req|
-        req.url 'messages'
-        req.body = {:message => opts}
+        if version == "v1.5"
+          req.url 'ws?messagesend'
+          req.body = "unit=#{unit}&channel=#{channel}&content=#{URI::encode(content)}"
+        else
+          req.url 'messages'
+          req.body = {:message => opts}
+        end
       end
       response.body.values.first
     end

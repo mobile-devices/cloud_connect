@@ -1,3 +1,7 @@
+2.0.2 - August 22, 2014
+-----------------------
+* Add support for old school APIs (v1.5)
+
 2.0.1 - August 13, 2014
 -----------------------
 * Update faraday from 0.5.1 to 0.8.9

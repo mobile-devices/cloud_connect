@@ -4,6 +4,7 @@ require 'cloud_connect/request'
 
 require 'cloud_connect/client/custom_methods'
 require 'cloud_connect/client/assets'
+require 'cloud_connect/client/asset_metadata'
 require 'cloud_connect/client/configurations'
 require 'cloud_connect/client/fields'
 require 'cloud_connect/client/channels'
@@ -43,6 +44,7 @@ module CloudConnect
     include CloudConnect::Request
 
     include CloudConnect::Client::Assets
+    include CloudConnect::Client::AssetMetadata
     include CloudConnect::Client::Configurations
     include CloudConnect::Client::Fields
     include CloudConnect::Client::Channels

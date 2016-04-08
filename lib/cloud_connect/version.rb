@@ -1,3 +1,3 @@
 module CloudConnect
-  VERSION = '3.1.0' unless defined?(CloudConnect::VERSION)
+  VERSION = '3.1.1' unless defined?(CloudConnect::VERSION)
 end

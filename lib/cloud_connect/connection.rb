@@ -11,7 +11,7 @@ module CloudConnect
     end
 
     def url
-      url = "http://#{[account, api_endpoint].join('.')}"
+      url = "https://#{[account, api_endpoint].join('.')}"
     end
 
     def connection(raw=false, force_urlencoded=false)

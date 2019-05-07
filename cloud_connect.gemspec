@@ -3,11 +3,11 @@ require File.expand_path('../lib/cloud_connect/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.add_dependency 'addressable', '~> 2.2'
-  gem.add_dependency 'faraday', '~> 0.9'
-  gem.add_dependency 'faraday_middleware', '~> 0.9.1'
+  gem.add_dependency 'faraday', '~> 0.15'
+  gem.add_dependency 'faraday_middleware', '~> 0.13.0'
   gem.add_dependency 'hashie', '~> 3.3.2'
   gem.add_dependency 'multi_json'
-  gem.add_development_dependency 'json', '~> 1.8'
+  gem.add_development_dependency 'json', '~> 2.2'
   gem.add_development_dependency 'maruku'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec'

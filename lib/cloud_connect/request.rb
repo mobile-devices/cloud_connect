@@ -38,12 +38,7 @@ module CloudConnect
             request.url(path, options)
           when :patch, :post, :put
             request.path = path
-            if !force_urlencoded
-              request.body = MultiJson.dump(options) unless options.empty?
-            else
-              request.body = options unless options.empty?
-            end
-            puts request.inspect
+            request.body = options unless options.empty?
           end
 
           request.headers['Host'] = CloudConnect.request_host if CloudConnect.request_host

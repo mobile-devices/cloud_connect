@@ -1,6 +1,6 @@
 require 'json'
 require 'base64'
-require 'faraday_middleware'
+require 'hashie'
 require 'faraday/response/raise_cloud_connect_error'
 
 module CloudConnect

@@ -1,3 +1,5 @@
+require 'hashie'
+
 module CustomMethods
   # @private
   def extended(base)

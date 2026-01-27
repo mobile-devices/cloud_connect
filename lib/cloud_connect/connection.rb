@@ -1,5 +1,6 @@
-require 'faraday_middleware'
+require 'faraday'
 require 'faraday/response/raise_cloud_connect_error'
+require 'cloud_connect/faraday_middleware/mashify'
 
 module CloudConnect
   # @private
@@ -24,6 +25,8 @@ module CloudConnect
 
       # TODO: Don't build on every request
       connection = Faraday.new(options) do |builder|
+        builder.request :authorization, :basic, authentication[:token], 'X' if authentication[:token]
+
         if !force_urlencoded
           builder.request :json
         else
@@ -33,16 +36,14 @@ module CloudConnect
         builder.use Faraday::Response::RaiseCloudConnectError
 
         unless raw
-          builder.use FaradayMiddleware::Mashify
-          builder.use FaradayMiddleware::ParseJson
+          builder.use CloudConnect::FaradayMiddleware::Mashify
+          builder.response :json
         end
 
         faraday_config_block.call(builder) if faraday_config_block
 
         builder.adapter *adapter
       end
-
-      connection.basic_auth authentication[:token], 'X'
       connection
     end
   end
